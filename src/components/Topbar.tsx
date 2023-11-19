@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../hooks/hooks";
 import { openModal } from "../store/slices/modalSlice";
 
 const Topbar = () => {
   const dispatch = useAppDispatch();
-  const handleAddTodo = () => dispatch(openModal({type: 'addingTodo'}));
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location.pathname)
+  const handleAddTodo = () => {
+    if (location.pathname === '/about') {
+      navigate('/');
+    }
+    dispatch(openModal({type: 'addingTodo'}))
+  };
   return (
     <header className="bg-gray-50">
       <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
