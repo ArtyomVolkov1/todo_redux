@@ -2,24 +2,25 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <div className="grid h-screen px-4 bg-white place-content-center">
-      <div className="text-center">
-        <h1 className="font-black text-gray-200 text-9xl">404</h1>
-
-        <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Uh-oh!
-        </p>
-
-        <p className="mt-4 text-gray-500">We can't find that page.</p>
-
-        <Link
-          to={'/'}
-          className="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
-        >
-          Вернуться
-        </Link>
+    <section>
+      <div className="mx-auto px-4 py-32 lg:flex lg:items-center">
+        <div className="mx-auto max-w-xl text-center">
+          <h1 className="text-3xl font-extrabold sm:text-5xl">Todo Redux.</h1>
+          <p className="mt-4 sm:text-xl/relaxed">
+            Небольшое тестовое приложение с базовыми операциями CRUD(добавить,
+            посмотреть, изменить, удалить).
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              className="block w-full rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-indigo-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+              to={"/"}
+            >
+              Вернуться
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
