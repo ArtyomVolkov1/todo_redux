@@ -1,6 +1,8 @@
 import { useAppSelector } from "../../hooks/hooks";
 
-const TodoFilter = () => {
+// Заменить todocount на todofilter для вывода списка выполненных и в работе
+
+const TodoCount = () => {
   const todos = useAppSelector((state) => state.todo.todos);
   return (
       <div className="flex justify-center mt-2">
@@ -9,4 +11,4 @@ const TodoFilter = () => {
   );
 };
 
-export default TodoFilter;
+export default TodoCount;

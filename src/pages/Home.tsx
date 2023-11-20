@@ -1,10 +1,10 @@
-import TodoFilter from "../components/TodoFilter/TodoFilter";
+import TodoCount from "../components/TodoCount/TodoCount";
 import TodoList from "../components/TodoList";
 
 const Home = () => {
   return (
     <>
-      <TodoFilter />
+      <TodoCount />
       <TodoList />
     </>
   );
