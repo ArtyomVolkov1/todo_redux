@@ -5,4 +5,4 @@ TODO-Redux -  небольшое тестовое приложение с баз
 **Client:** React/Typescript, React-router-dom, TailwindCSS, Redux-toolkit, Redux-persist (для сохранения состояния между сессиями), formik(для валидации формы)
 
 ## 🔭 Preview
-Click to go ...
+Click to go [TodoRedux](https://todo-redux-volkov.vercel.app/)
