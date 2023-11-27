@@ -29,7 +29,15 @@ const TodoItem = ({ title, id, completed }: TodoItemProps) => {
           completed ? "border-success" : "border-default"
         } bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6`}
       >
-        <div className="flex">
+        <div className="flex items-center justify-end">
+        {!completed && (
+            <label
+              htmlFor="green-checkbox"
+              className="mr-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+            >
+              Завершить
+            </label>
+          )}
           <input
             onChange={handleToggleTodoChange}
             checked={completed ? true : false}
@@ -37,14 +45,6 @@ const TodoItem = ({ title, id, completed }: TodoItemProps) => {
             value=""
             className="w-4 h-4 text-green-600"
           />
-          {!completed && (
-            <label
-              htmlFor="green-checkbox"
-              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
-              Завершить
-            </label>
-          )}
         </div>
         <h3 className="break-words mt-0.5 text-lg font-medium text-gray-900">
           Задача: {title}
