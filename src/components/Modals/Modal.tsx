@@ -7,10 +7,6 @@ import * as yup from "yup";
 import { addTodo, deleteTodo, editTodo } from "../../store/slices/todoSlice";
 import { getTodoById } from "../../selectors";
 
-type TodoFormSchemaType = yup.ObjectSchema<{
-  title: string;
-}>;
-
 interface MyFormValue {
   title: string;
 }
@@ -19,8 +15,15 @@ type HandleClose = {
   handleClose: () => void;
 };
 
+type TodoFormSchemaType = yup.ObjectSchema<{
+  title: string;
+}>;
+
 const todoFormSchema: TodoFormSchemaType = yup.object().shape({
-  title: yup.string().required("Карточка не может быть пустой").min(2, "Слишком коротко!"),
+  title: yup
+    .string()
+    .required("Карточка не может быть пустой")
+    .min(2, "Слишком коротко!"),
 });
 
 const AddTodoForm = ({ handleClose }: HandleClose) => {
@@ -79,7 +82,9 @@ const AddTodoForm = ({ handleClose }: HandleClose) => {
                 Название...
               </span>
             </label>
-            {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
+            {errors.title && (
+              <p className="text-sm text-red-500">{errors.title}</p>
+            )}
             <div className="mt-6 sm:flex sm:gap-5 lg:justify-start">
               <button
                 type="submit"
@@ -151,9 +156,9 @@ const DeleteTodo = ({ handleClose }: HandleClose) => {
 
 const EditTodo = ({ handleClose }: HandleClose) => {
   const todoId = useAppSelector((state) => state.modal.todoId);
-  const todo:any = useAppSelector(getTodoById(todoId));
+  const todo: any = useAppSelector(getTodoById(todoId));
   const initialValues: MyFormValue = { title: todo.task.title };
-  console.log(initialValues)
+  console.log(initialValues);
   const dispatch = useAppDispatch();
   return (
     <div className="rounded-xl border border-indigo-500 bg-white p-4 shadow-lg md:w-1/2 lg:w-[500px] ">
@@ -178,9 +183,9 @@ const EditTodo = ({ handleClose }: HandleClose) => {
         initialValues={initialValues}
         validationSchema={todoFormSchema}
         onSubmit={function (title: MyFormValue): any {
-          const data = { todoId: todoId, ...title }
-          try { 
-            dispatch(editTodo(data))
+          const data = { todoId: todoId, ...title };
+          try {
+            dispatch(editTodo(data));
             handleClose();
           } catch (error) {
             console.log("Error", error);
@@ -203,7 +208,9 @@ const EditTodo = ({ handleClose }: HandleClose) => {
                 Название...
               </span>
             </label>
-            {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
+            {errors.title && (
+              <p className="text-sm text-red-500">{errors.title}</p>
+            )}
             <div className="mt-6 sm:flex sm:gap-5 lg:justify-start">
               <button
                 type="submit"

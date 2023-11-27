@@ -6,7 +6,6 @@ const Topbar = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname)
   const handleAddTodo = () => {
     if (location.pathname === '/about') {
       navigate('/');

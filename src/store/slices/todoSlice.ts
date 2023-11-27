@@ -34,10 +34,7 @@ export const todoSlice = createSlice({
       }
     },
     toogleTodo: (state, { payload: { todoId } }) => {
-      const toogledTodo = state.todos.find((todo) => todo.id === todoId);
-      if (toogledTodo) {
-        toogledTodo.completed = !toogledTodo.completed;
-      }
+      state.todos = state.todos.map(todo => todo.id === todoId ? {...todo, completed: !todo.completed} : todo);
     },
   },
 });
