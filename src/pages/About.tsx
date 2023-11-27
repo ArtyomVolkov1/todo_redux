@@ -7,8 +7,8 @@ const About = () => {
         <div className="mx-auto max-w-xl text-center">
           <h1 className="text-3xl font-extrabold sm:text-5xl">Todo Redux.</h1>
           <p className="mt-4 sm:text-xl/relaxed">
-            Небольшое тестовое приложение с базовыми операциями CRUD(добавить,
-            посмотреть, изменить, удалить).
+            Небольшое тестовое приложение с базовыми операциями CRUD: добавить,
+            посмотреть, изменить, удалить.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link

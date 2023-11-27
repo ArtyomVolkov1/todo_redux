@@ -12,3 +12,12 @@
     @apply  min-h-screen font-inter;
   }
 }
+
+@layer utilities {
+  .border-default {
+    @apply border-gray-100
+  }
+  .border-success {
+    @apply border-green-400
+  }
+}
