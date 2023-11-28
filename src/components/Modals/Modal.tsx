@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { v4 as uuidv4 } from "uuid";
 import { closeModal } from "../../store/slices/modalSlice";
@@ -8,7 +7,7 @@ import { addTodo, deleteTodo, editTodo } from "../../store/slices/todoSlice";
 import { getTodoById } from "../../selectors";
 
 interface MyFormValue {
-  title: string;
+  title?: string;
 }
 
 type HandleClose = {
@@ -51,7 +50,7 @@ const AddTodoForm = ({ handleClose }: HandleClose) => {
       <Formik
         initialValues={initialValues}
         validationSchema={todoFormSchema}
-        onSubmit={function (title: MyFormValue): any {
+        onSubmit={function (title: MyFormValue) {
           try {
             dispatch(
               addTodo({
@@ -156,9 +155,9 @@ const DeleteTodo = ({ handleClose }: HandleClose) => {
 
 const EditTodo = ({ handleClose }: HandleClose) => {
   const todoId = useAppSelector((state) => state.modal.todoId);
-  const todo: any = useAppSelector(getTodoById(todoId));
-  const initialValues: MyFormValue = { title: todo.task.title };
-  console.log(initialValues);
+  const todo = useAppSelector(getTodoById(todoId));
+  console.log(todo);
+  const initialValues: MyFormValue = { title: todo?.task.title };
   const dispatch = useAppDispatch();
   return (
     <div className="rounded-xl border border-indigo-500 bg-white p-4 shadow-lg md:w-1/2 lg:w-[500px] ">
@@ -182,7 +181,7 @@ const EditTodo = ({ handleClose }: HandleClose) => {
       <Formik
         initialValues={initialValues}
         validationSchema={todoFormSchema}
-        onSubmit={function (title: MyFormValue): any {
+        onSubmit={function (title: MyFormValue) {
           const data = { todoId: todoId, ...title };
           try {
             dispatch(editTodo(data));

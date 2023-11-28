@@ -8,7 +8,7 @@ export interface TodoInterface {
   completed: boolean;
 }
 
-interface TodosListInterface {
+export interface TodosListInterface {
   todos: TodoInterface[];
 }
 
@@ -28,7 +28,6 @@ export const todoSlice = createSlice({
     },
     editTodo: (state, {payload: { todoId, title }}) => {
       const todo= state.todos.find(({id}) => id === todoId);
-      console.log(todo)
       if (todo) {
         todo.task.title = title;
       }
